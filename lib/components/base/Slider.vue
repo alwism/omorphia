@@ -19,8 +19,12 @@
             '--min-value': min,
             '--max-value': max,
           }"
+          list="props.id"
           @input="onInput($refs.input.value)"
         />
+        <datalist id="props.id">
+          <option v-for="(option, index) in snapPoints" :key="index" :value="option"></option>
+        </datalist>
         <div class="slider-range">
           <span>
             {{ min }}
@@ -71,6 +75,10 @@ const props = defineProps({
   disabled: {
     type: Boolean,
     default: false,
+  },
+  snapPoints: {
+    type: Array,
+    default: () => [],
   },
 })
 
